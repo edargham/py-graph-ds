@@ -4,6 +4,8 @@ from vertex import Vertex
 from edge_list import EdgeList
 from mst_list import MstList
 
+from types import *
+
 class Graph():
     def __init__(self, vertices: np.ndarray, adj_mat: np.ndarray=None, directed: bool=False):
         self.vertices: np.ndarray = vertices
@@ -34,7 +36,30 @@ class Graph():
         # endfor
     # endinit
 
-    def bfs(self, callback=None):
+    # def _bfs_get_neigbors()
+
+    def bfs(self, initial_node_idx:int=0, callback=None):
+        # Initialize queue and set enqueue the initial node's index.
+        bfs_queue = []
+        bfs_queue.append(initial_node_idx)
+
+        if (type(out:=callback(self.vertices[initial_node_idx])) != NoneType):
+            self.vertices[initial_node_idx].set_mark(1)
+            return out
+        # endif
+
+        self.vertices[initial_node_idx].set_mark(1)
+
+        while bfs_queue != 0:
+            idx: int = bfs_queue.pop(0)
+
+
+        # endwhile
+
+        return
+    # endmethod
+
+    def bfs_all(self, callback=None):
         return
     # endmethod
 
