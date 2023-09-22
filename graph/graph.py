@@ -13,7 +13,11 @@ class Graph():
         self.adj_mat: np.ndarray = adj_mat
 
         if (self.adj_mat is not None):
-            if self.adj_mat.shape[0] != self.adj_mat.shape[1] and self.adj_mat.shape[0] != self.vertices.shape[0] and len(self.vertices.shape) != 1:
+            if (
+                self.adj_mat.shape[0] != self.adj_mat.shape[1] 
+                and self.adj_mat.shape[0] != self.vertices.shape[0] 
+                and len(self.vertices.shape) != 1
+            ):
                 raise Exception('Mismatch between edge dims and/or vertex dims.')
             # endif
 
@@ -67,7 +71,10 @@ class Graph():
         bfs_queue = []
         bfs_queue.append(initial_node_idx)
 
-        if (callback is not None and type(out:=callback(self.vertices[initial_node_idx])) != NoneType):
+        if (
+            callback is not None 
+            and type(out:=callback(self.vertices[initial_node_idx])) != NoneType
+        ):
             self.vertices[initial_node_idx].set_mark(1)
             return out
         # endif
@@ -82,7 +89,10 @@ class Graph():
                 if self.vertices[n].get_mark() == 0:
                     bfs_queue.append(n)
                     
-                    if (callback is not None and type(out:=callback(self.vertices[n])) != NoneType):
+                    if (
+                        callback is not None 
+                        and type(out:=callback(self.vertices[n])) != NoneType
+                    ):
                         self.vertices[n].set_mark(1)
                         return self.vertices[n], out
                     # endif
@@ -105,7 +115,7 @@ class Graph():
         for i in range(self.vertices.shape[0]):
             last = self.bfs(i, callback)
         # endfor
-        
+
         return last
     # endmethod
 
@@ -123,13 +133,19 @@ class Graph():
                 self.vertices[next_idx].set_mark(1)
                 dfs_stack.insert(0, next_idx)
 
-                if (pre_callback is not None and type(pre_out:=pre_callback(self.vertices[next_idx])) != NoneType):
+                if (
+                    pre_callback is not None 
+                    and type(pre_out:=pre_callback(self.vertices[next_idx])) != NoneType
+                ):
                     return self.vertices[next_idx], pre_out
                 # endif
             # endif
             else:
                 popped_idx = dfs_stack.pop(0)
-                if (post_callback is not None and type(post_out:=post_callback(self.vertices[popped_idx])) != NoneType):
+                if (
+                    post_callback is not None 
+                    and type(post_out:=post_callback(self.vertices[popped_idx])) != NoneType
+                ):
                     return self.vertices[popped_idx], post_out
                 # endif
             # endelse
