@@ -1,8 +1,6 @@
 import numpy as np
 
 from vertex import Vertex
-from edge_list import EdgeList
-from mst_list import MstList
 
 from types import *
 
@@ -167,18 +165,6 @@ class Graph():
     # endmethod
 
     def ucs(self):
-        return
-    # endmethod
-
-    def _find_set(self, parent, u):
-        return
-    # endmethod
-
-    def _union_set(self, parent, rank, u):
-        return
-    # endmethod
-
-    def dsu(self):
-        return
+        pass
     # endmethod
 # endclass

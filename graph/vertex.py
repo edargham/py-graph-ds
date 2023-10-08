@@ -1,11 +1,16 @@
 import random
 
 class Vertex():
-    def __init__(self, datum, mark, idx):
+    def __init__(self, datum, mark, idx, name=''):
         self.datum = datum
         self.mark = mark,
         self.idx = idx
         self.order = random.randint(0, 256)
+
+        if name=='':
+            self.name = f'vertex_{ idx }'
+        else:
+            self.name = name 
     # endinit
 
     def get_datum(self):
@@ -34,6 +39,10 @@ class Vertex():
 
     def get_order(self):
         return self.order
+    # endmethod
+
+    def get_name(self):
+        return self.name
     # endmethod
 
     def set_order(self, order):
